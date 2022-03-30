@@ -8,5 +8,5 @@ terraform {
       source = "terraform-providers/vmc"
     }
   }
-  required_version = ">= 1.1"
+  required_version = ">= 1.10"
 }
