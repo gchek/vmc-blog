@@ -52,7 +52,7 @@ resource "aws_subnet" "Subnet20-Att_vpc" {
 }
 
 /*================
-IGWs
+IGW
 =================*/
 resource "aws_internet_gateway" "Att_vpc-IGW" {
   vpc_id = aws_vpc.Att_vpc.id
@@ -85,9 +85,9 @@ resource "aws_default_route_table" "Att_vpc-RT" {
 
 
 
-/*================================
-Route Table association for VPC201
-=================================*/
+/*======================================
+Subnet Route Table association for Attached VPC
+=======================================*/
 
 resource "aws_route_table_association" "Att_vpc_10" {
   subnet_id      = aws_subnet.Subnet10-Att_vpc.id
@@ -194,7 +194,7 @@ resource "aws_default_security_group" "default" {
 }
 
 /*==================
-  S3 VPC end point
+  S3 VPC Gateway end point
 ===================*/
 resource "aws_vpc_endpoint" "s3" {
  vpc_id          = aws_vpc.Att_vpc.id

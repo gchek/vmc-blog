@@ -15,8 +15,8 @@ terraform {
 }
 
 /*================
-Create AWS VPCs
-The VPCs and subnets CIDR are set in "variables.tf" file
+Create AWS VPC
+The VPC and subnets CIDR are set in "variables.tf" file
 =================*/
 module "VPCs" {
   source = "../VPCs"
@@ -43,8 +43,6 @@ module "EC2s" {
   Subnet10-Att_vpc        = module.VPCs.Subnet10-Att_vpc_id
   Subnet10-Att_vpc-base   = var.My_subnets["Subnet10-Att_vpc"]
   SG-Att_vpc              = module.VPCs.SG-Att_vpc_id
-
-
 }
 
 /*================
@@ -53,7 +51,7 @@ Create SDDC
 module "SDDC" {
   source = "../SDDC"
 
-  my_org_id             = var.my_org_id                   # ORG ID from secrets
+  my_org_id             = var.my_org_id                   # ORG ID
   SDDC_Mngt             = var.My_subnets["SDDC_Mngt"]     # Management IP range
   SDDC_default          = var.My_subnets["SDDC_default"]  # Default SDDC Segment
   Att_vpc_subnet_id     = module.VPCs.Subnet10-Att_vpc_id # VPC attached subnet
