@@ -51,5 +51,5 @@ variable "VMC_subnets" {
 Home Addresses
 =================*/
 
-variable "Home_Gilles"     { default = ["91.178.69.183", "172.200.0.0/16" , "84.229.114.57"]}
+variable "Home_Gilles"     { default = ["91.178.69.183", "172.200.0.0/16" , "84.229.115.40", "92.93.186.176"]}
 

@@ -63,7 +63,7 @@ resource "nsxt_policy_predefined_gateway_policy" "mgw" {
       "/infra/services/ICMP-ALL",
       "/infra/services/VMware_Remote_Console"
     ]
-    source_groups         = []
+    source_groups         = [nsxt_policy_group.Home_Gilles.path]
     sources_excluded      = false
   }
   rule {
@@ -97,7 +97,7 @@ resource "nsxt_policy_predefined_gateway_policy" "mgw" {
     profiles              = []
     scope                 = ["/infra/labels/mgw"]
     services              = ["/infra/services/HTTPS"]
-    source_groups         = []
+    source_groups         = [nsxt_policy_group.Home_Gilles.path]
     sources_excluded      = false
   }
 
@@ -144,36 +144,7 @@ resource "nsxt_policy_predefined_gateway_policy" "cgw" {
 
   # New rules below . . 
   # Order in code below is order in GUI
-  rule {
-    action = "ALLOW"
-    destination_groups    = ["/infra/tier-0s/vmc/groups/deployment_group_vpc_prefixes"]
-    destinations_excluded = false
-    direction             = "IN_OUT"
-    disabled              = false
-    display_name          = "to vTGW VPCs"
-    ip_version            = "IPV4_IPV6"
-    logged                = false
-    profiles              = []
-    scope                 = ["/infra/labels/cgw-direct-connect"]
-    services              = []
-    source_groups         = []
-    sources_excluded      = false
-  }
-  rule {
-    action = "ALLOW"
-    destination_groups    = []
-    destinations_excluded = false
-    direction             = "IN_OUT"
-    disabled              = false
-    display_name          = "from vTGW VPCs"
-    ip_version            = "IPV4_IPV6"
-    logged                = false
-    profiles              = []
-    scope                 = ["/infra/labels/cgw-direct-connect"]
-    services              = []
-    source_groups         = ["/infra/tier-0s/vmc/groups/deployment_group_vpc_prefixes"]
-    sources_excluded      = false
-  }
+
   rule {
     action = "ALLOW"
     destination_groups    = [
