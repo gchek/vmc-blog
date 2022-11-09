@@ -65,6 +65,15 @@ resource "vmc_sddc" "Terraform_SDDC1" {
 #    depends_on = [vmc_site_recovery.SRM]
 #}
 
+/*==============
+SDDC Group
+===============*/
+
+#resource "vmc_sddc_group" "sddc_group" {
+#    name            = "TF_Group"
+#    description     = "SDDC Group Terraform"
+#    sddc_member_ids = [vmc_sddc.Terraform_SDDC1.id]
+#}
 
 /*=======================
 Outputs for other modules
@@ -79,5 +88,7 @@ output "nsxt_cloudadmin"            {value = vmc_sddc.Terraform_SDDC1.nsxt_cloud
 output "nsxt_cloudadmin_password"   {value = vmc_sddc.Terraform_SDDC1.nsxt_cloudadmin_password}
 #output "VR_IP"                      {value = vmc_site_recovery.SRM.vr_node.ip_address}
 #output "SRM_IP"                     {value = vmc_site_recovery.SRM.srm_node.ip_address}
+#output "vTGW_ID"                    {value = vmc_sddc_group.sddc_group.tgw_id}
+#output "vTGW_Region"                {value = vmc_sddc_group.sddc_group.tgw_region}
 
 

@@ -21,4 +21,5 @@ output "nsxt_cloudadmin_password"   {
 #output "VR_IP"                      {value = module.SDDC.VR_IP}
 #output "SRM_IP"                     {value = module.SDDC.SRM_IP}
 
-
+#output "vTGW_ID"                    {value = module.SDDC.vTGW_ID}
+#output "vTGW_Region"                {value = module.SDDC.vTGW_Region}
